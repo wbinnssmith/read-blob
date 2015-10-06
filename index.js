@@ -6,10 +6,10 @@ var methods = {
   text: 'readAsText'
 };
 
-function readfile (blob, type, cb) {
+function readBlob (blob, type, cb) {
   var promise;
 
-  if (typeof type === 'function') {
+  if (typeof type !== 'string') {
     cb = type;
     type = 'arraybuffer';
   }
@@ -48,12 +48,12 @@ function readfile (blob, type, cb) {
   return promise;
 }
 
-module.exports = readfile;
+module.exports = readBlob;
 
 // add arraybuffer, dataurl, and text methods
 // as aliases to their options counterpart
 Object.keys(methods).forEach(function (type) {
-  readfile[type] = function (blob, cb) {
-    return readfile(blob, type, cb);
+  readBlob[type] = function (blob, cb) {
+    return readBlob(blob, type, cb);
   };
 });

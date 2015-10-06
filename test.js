@@ -1,6 +1,6 @@
 /* global Blob */
 
-var test = require('tape');
+var test = require('blue-tape');
 var isEqual = require('lodash.isequal');
 var abEqual = require('arraybuffer-equal');
 var readBlob = require('./');
@@ -55,15 +55,33 @@ types.forEach(function (type) {
 
   test(type + ' as type-param returning promise', function (t) {
     t.plan(1);
-    readBlob(binaryBlob, type).then(function (res) {
+    return readBlob(binaryBlob, type).then(function (res) {
       t.assert(isEqual(res, expected[type], compare));
     });
   });
 
   test(type + ' as a method alias returning promise', function (t) {
     t.plan(1);
-    readBlob[type](binaryBlob).then(function (res) {
+    return readBlob[type](binaryBlob).then(function (res) {
       t.assert(isEqual(res, expected[type], compare));
     });
+  });
+});
+
+test('without type, with callback', function (t) {
+  t.plan(1);
+  readBlob(binaryBlob, function (err, res) {
+    if (err) {
+      t.fail();
+    }
+
+    t.assert(isEqual(res, expected.arraybuffer, compare), 'defaults to arraybuffer');
+  });
+});
+
+test('without type, without callback', function (t) {
+  t.plan(1);
+  return readBlob(binaryBlob).then(function (res) {
+    t.assert(isEqual(res, expected.arraybuffer, compare), 'defaults to arraybuffer');
   });
 });

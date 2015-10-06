@@ -33,10 +33,10 @@
   "devDependencies": {
     "arraybuffer-equal": "^1.0.2",
     "base-64": "^0.1.0",
+    "blue-tape": "^0.1.10",
     "browserify": "^11.2.0",
     "hihat": "^2.4.3",
     "lodash.isequal": "^3.0.4",
-    "semistandard": "^7.0.2",
-    "tape": "^4.2.1"
+    "semistandard": "^7.0.2"
   }
 }

@@ -3,7 +3,7 @@ Read [Blobs](https://developer.mozilla.org/en-US/docs/Web/API/Blob) (and [Files]
 
 Reading binary data in the browser with the native Filereader API is extremely clunky and un-nodelike.
 
-`read-blob` fixes that by adding nice errback and Promise interfaces. Since this provides errback and Promise interfaces, the data in the blob is buffered into memory and provided as an arraybuffer, base64-encoded data url, or simple text.
+`read-blob` fixes that by adding nice errback and Promise interfaces. The data in the blob is buffered into memory and provided as an arraybuffer, base64-encoded data url, or simple text.
 
 If you'd rather not buffer and prefer a streaming interface, check out [filereader-stream](https://github.com/maxogden/filereader-stream). In contrast, `read-blob` is designed for more simple use-cases where streaming isn't necessary or is simply too much.
 

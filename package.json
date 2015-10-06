@@ -37,8 +37,5 @@
     "lodash.isequal": "^3.0.4",
     "semistandard": "^7.0.2",
     "tape": "^4.2.1"
-  },
-  "dependencies": {
-    "pify": "^2.2.0"
   }
 }

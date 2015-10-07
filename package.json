@@ -1,6 +1,6 @@
 {
   "name": "read-blob",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Read file blobs without going insane",
   "main": "index.js",
   "testling": {

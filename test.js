@@ -85,3 +85,17 @@ test('without type, without callback', function (t) {
     t.assert(isEqual(res, expected.arraybuffer, compare), 'defaults to arraybuffer');
   });
 });
+
+test('calls callback with error if doesnt receive blob', function (t) {
+  t.plan(1);
+  return readBlob('not a blob', function (err) {
+    t.assert(err instanceof Error, 'called callback with err');
+  });
+});
+
+test('if no callback, returns a reject promise if doesnt receive blob', function (t) {
+  t.plan(1);
+  return readBlob('not a blob').catch(function (err) {
+    t.assert(err instanceof Error, 'received rejected promise');
+  });
+});

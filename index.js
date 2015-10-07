@@ -1,4 +1,4 @@
-/* global FileReader */
+/* global FileReader, Blob */
 
 var methods = {
   arraybuffer: 'readAsArrayBuffer',
@@ -12,6 +12,16 @@ function readBlob (blob, type, cb) {
   if (typeof type !== 'string') {
     cb = type;
     type = 'arraybuffer';
+  }
+
+  if (!(blob instanceof Blob)) {
+    var err = new Error('first argument is not a blob');
+    if (cb) {
+      cb(err);
+      return;
+    } else {
+      return Promise.reject(err);
+    }
   }
 
   if (!cb) {

@@ -26,17 +26,14 @@ function readBlob (blob, type, cb) {
   var method = methods[type.toLowerCase()];
   var reader = new FileReader();
 
-  reader.onload = function () {
-    cb(null, reader.result);
-  };
-
-  reader.onerror = function () {
-    cb(reader.error);
-  };
-
-  reader.onabort = function () {
-    cb(reader.error);
-  };
+  reader.addEventListener('loadend', function onend (e) {
+    reader.removeEventListener('loadend', onend);
+    if (e.error) {
+      cb(e.error);
+    } else {
+      cb(null, reader.result);
+    }
+  });
 
   if (method) {
     reader[method](blob);

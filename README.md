@@ -1,5 +1,5 @@
 # read-blob
-Read [Blobs](https://developer.mozilla.org/en-US/docs/Web/API/Blob) (and [Files](https://developer.mozilla.org/en-US/docs/Web/API/File)) without going insane. Intended for use with browsers and environments that implement the File API.
+Read [Blobs](https://developer.mozilla.org/en-US/docs/Web/API/Blob) (and [Files](https://developer.mozilla.org/en-US/docs/Web/API/File)) easily. Intended for use with browsers and environments that implement the File API.
 
 Reading binary data in the browser with the native Filereader API is extremely clunky and un-nodelike.
 

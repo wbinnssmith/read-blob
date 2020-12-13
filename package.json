@@ -17,7 +17,7 @@
     ]
   },
   "scripts": {
-    "build": "browserify . -s readBlob > dist/read-blob.js",
+    "build": "mkdir -p dist && browserify . -s readBlob > dist/read-blob.js",
     "prepublish": "npm test && npm run build",
     "test": "semistandard && hihat test.js --exec --timeout 1000"
   },
